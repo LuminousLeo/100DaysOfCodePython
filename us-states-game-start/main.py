@@ -23,9 +23,14 @@ while game_on:
     # ask the user to type in the name of a state
     answer_state = screen.textinput(title='Guess the State', prompt="What's another state's name? ")
 
-    # check the state that the user inputted is in the states_dict
+    # 'exit' is the word to exit the game
+    if answer_state.lower() == 'exit':
+        break
+
+    # check if the user's guess is a U.S state
     name.state_checker(state=capwords(answer_state))
 
-
+# create a csv file with the U.S states that the user did not guess
+name.states_to_memorize()
 
 screen.exitonclick()
