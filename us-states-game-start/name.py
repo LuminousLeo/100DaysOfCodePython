@@ -58,9 +58,8 @@ class Name(Turtle):
         """states_to_memorize() method creates a csv file with names of the states
         that the user did not guess"""
 
-        for state in STATES:
-            if state not in self.correct_states:
-                self.missing_states['states to memorize'].append(state)
+        # using list comprehension to add the states that the user did not guess to the missing states dictionary
+        self.missing_states['states to memorize'] = [state for state in STATES if state not in self.correct_states]
 
         missing_states_data = pandas.DataFrame(data=self.missing_states)
         missing_states_data.to_csv('states_to_memorize.csv')
